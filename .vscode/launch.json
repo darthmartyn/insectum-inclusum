@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PowerShell Launch Script",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${workspaceFolder}/build.ps1",
+            "cwd": "${cwd}",
+            "args": [ "-rtspath 'C:\\AdaCore\\gnu-arm-elf-25.1\\arm-eabi\\lib\\gnat\\light-cortex-m7f' -gcc 'arm-eabi-gcc'" ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+project Target is
+
+    Source_Directory := Project'Project_Dir & "/src";
+    Object_Directory := Project'Project_Dir & "/obj";
+    
+    for Source_Dirs use (Source_Directory);
+    for Object_Dir use Object_Directory;
+    for Main use ("myprocess.adb");
+    for Exec_Dir use ".";
+
+    for Target use "arm-eabi";
+    for Runtime ("Ada") use "light-cortex-m7f";
+    -- single precision floating point
+
+    package Builder is
+    end Builder;
+
+    package Compiler is
+    end Compiler;
+
+    package Binder is
+    end Binder;
+
+    package Linker is
+        for Switches ("Ada") use ("-T", Object_Directory & "link.ld");
+    end Linker;
+
+    package Device_Configuration is
+        for Memories use ("flash", "sram");
+        for Float_Handling use "hard";
+        for Boot_Memory use "flash";
+        --  flash
+        for Mem_Kind ("flash") use "ROM";
+        for Address ("flash")  use "16#08000000#";
+        for Size ("flash")     use "1024K";
+        --  sram
+        for Mem_Kind ("sram") use "RAM";
+        for Address ("sram")  use "16#20000000#";
+        for Size ("sram")     use "128K";
+    end Device_Configuration;
+
+end Target;

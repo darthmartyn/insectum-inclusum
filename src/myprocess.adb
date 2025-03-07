@@ -19,4 +19,3 @@ begin
    Put_Line ("Debugger did its job!");
 
 end MyProcess;
-

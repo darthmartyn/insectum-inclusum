@@ -5,9 +5,13 @@
             "name": "PowerShell Launch Script",
             "type": "PowerShell",
             "request": "launch",
-            "script": "${workspaceFolder}/build.ps1",
+            "script": "${workspaceFolder}\\build.ps1",
             "cwd": "${cwd}",
-            "args": [ "-rtspath 'C:\\AdaCore\\gnu-arm-elf-25.1\\arm-eabi\\lib\\gnat\\light-cortex-m7f' -target 'arm-eabi'" ]
+            "args": [ "-rtspath 'C:\\AdaCore\\gnu-arm-elf-25.1\\arm-eabi\\lib\\gnat\\light-cortex-m7f'",
+                      "-target 'arm-eabi'",
+                      "-gccargs '-mlittle-endian -mthumb -mfloat-abi=hard -mcpu=cortex-m7 -mfpu=fpv5-sp-d16 -march=armv7e-m+fpv5'",
+                      "-gpr '${workspaceFolder}\\target.gpr'",
+                      "-startupgen $true" ]
         }
     ]
 }
